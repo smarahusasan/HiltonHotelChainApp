@@ -1,5 +1,7 @@
 package smart.domain;
 
+import smart.utils.Status;
+
 import java.util.Date;
 
 public class Reservation {
@@ -8,10 +10,10 @@ public class Reservation {
     private int roomId;
     private Date checkInDate;
     private Date checkOutDate;
-    private String status;
+    private Status status;
     private int hotelId;
 
-    public Reservation(int reservationId, int guestId, int roomId, Date checkInDate, Date checkOutDate, String status, int hotelId) {
+    public Reservation(int reservationId, int guestId, int roomId, Date checkInDate, Date checkOutDate, Status status, int hotelId) {
         this.reservationId = reservationId;
         this.guestId = guestId;
         this.roomId = roomId;
@@ -61,11 +63,11 @@ public class Reservation {
         this.checkOutDate = checkOutDate;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

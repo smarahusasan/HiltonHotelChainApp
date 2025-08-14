@@ -1,12 +1,14 @@
 package smart.domain;
 
+import smart.utils.RoomType;
+
 public class Room {
     private int roomNumber;
-    private String type;
+    private RoomType type;
     private boolean available;
     private int hotelId;
 
-    public Room(int roomNumber, String type, boolean available, int hotelId) {
+    public Room(int roomNumber, RoomType type, boolean available, int hotelId) {
         this.roomNumber = roomNumber;
         this.type = type;
         this.available = available;
@@ -21,11 +23,11 @@ public class Room {
         this.roomNumber = roomNumber;
     }
 
-    public String getType() {
+    public RoomType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(RoomType type) {
         this.type = type;
     }
 
