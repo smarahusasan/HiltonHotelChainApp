@@ -1,6 +1,6 @@
 package smart.domain;
 
-import smart.utils.Status;
+import smart.utils.enums.Status;
 
 import java.util.Date;
 

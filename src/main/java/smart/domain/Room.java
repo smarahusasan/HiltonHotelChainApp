@@ -1,6 +1,6 @@
 package smart.domain;
 
-import smart.utils.RoomType;
+import smart.utils.enums.RoomType;
 
 public class Room {
     private int roomNumber;
