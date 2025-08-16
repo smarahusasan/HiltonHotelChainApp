@@ -36,7 +36,7 @@ public class RoomRepository implements IRoomRepository {
                 throw new RepoException("Room was not added!");
             }
         }catch (SQLException e) {
-            e.printStackTrace();
+            throw new RepoException("SQLException!");
         }
     }
 
@@ -57,7 +57,7 @@ public class RoomRepository implements IRoomRepository {
                 rooms.add(room);
             }
         }catch (SQLException e) {
-            e.printStackTrace();
+            throw new RepoException("SQLException!");
         }
         return rooms;
     }
@@ -77,7 +77,7 @@ public class RoomRepository implements IRoomRepository {
                 return new Room(roomId, type, available, hotelId);
             }
         }catch (SQLException e) {
-            e.printStackTrace();
+            throw new RepoException("SQLException!");
         }
         throw new RepoException("There is no room with id "+roomId);
     }
@@ -95,7 +95,7 @@ public class RoomRepository implements IRoomRepository {
                 throw new RepoException("Room was not updated!");
             }
         }catch (SQLException e) {
-            e.printStackTrace();
+            throw new RepoException("SQLException!");
         }
     }
 }

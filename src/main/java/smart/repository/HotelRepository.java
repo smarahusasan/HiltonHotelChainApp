@@ -31,7 +31,7 @@ public class HotelRepository implements IHotelRepository {
             if(res!=1)
                 throw new RepoException("Hotel was not added!");
         }catch (SQLException e) {
-            e.printStackTrace();
+            throw new RepoException("SQLException!");
         }
     }
 
@@ -49,7 +49,7 @@ public class HotelRepository implements IHotelRepository {
                 return new Hotel(hotelId,name,location);
             }
         }catch (SQLException e) {
-            e.printStackTrace();
+            throw new RepoException("SQLException!");
         }
         throw new RepoException("Hotel with id "+hotelId+" not found!");
     }

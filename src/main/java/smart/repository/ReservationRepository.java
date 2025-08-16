@@ -28,7 +28,7 @@ public class ReservationRepository implements IReservationRepository {
             preparedStatement.setInt(2, reservation.getHotelId());
             preparedStatement.setDate(3, reservation.getCheckInDate());
             preparedStatement.setDate(4, reservation.getCheckOutDate());
-            preparedStatement.setDate(5, Date.valueOf(LocalDateTime.now().toLocalDate()));
+            preparedStatement.setDate(5, reservation.getReservationDate());
             preparedStatement.setString(6,reservation.getStatus().name());
             preparedStatement.setInt(7,reservation.getRoomId());
 
@@ -37,7 +37,7 @@ public class ReservationRepository implements IReservationRepository {
                 throw new RepoException("Reservation was not added!");
             }
         }catch (SQLException e) {
-            e.printStackTrace();
+            throw new RepoException("SQLException!");
         }
     }
 
@@ -54,7 +54,7 @@ public class ReservationRepository implements IReservationRepository {
                 throw new RepoException("Reservation was not cancelled!");
             }
         }catch (SQLException e) {
-            e.printStackTrace();
+            throw new RepoException("SQLException!");
         }
     }
 
@@ -72,14 +72,15 @@ public class ReservationRepository implements IReservationRepository {
                 int guestId=resultSet.getInt("guest_id");
                 Date checkInDate=resultSet.getDate("checkindate");
                 Date checkOutDate=resultSet.getDate("checkoutdate");
+                Date reservationDate=resultSet.getDate("reservationdate");
                 Status status=Status.valueOf(resultSet.getString("status"));
                 int roomId=resultSet.getInt("room_number");
-                Reservation reservation=new Reservation(resId,guestId,roomId,checkInDate,checkOutDate,status,hotelId);
+                Reservation reservation=new Reservation(resId,guestId,roomId,checkInDate,checkOutDate,reservationDate,status,hotelId);
 
                 reservations.add(reservation);
             }
         }catch (SQLException e) {
-            e.printStackTrace();
+            throw new RepoException("SQLException!");
         }
         return reservations;
     }

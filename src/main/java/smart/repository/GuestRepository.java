@@ -35,7 +35,7 @@ public class GuestRepository implements IGuestRepository {
             if(result!=1)
                 throw new RepoException("Guest was not added!");
         }catch (SQLException e){
-            e.printStackTrace();
+            throw new RepoException("SQLException!");
         }
     }
 
@@ -58,7 +58,7 @@ public class GuestRepository implements IGuestRepository {
                 guests.add(guest);
             }
         }catch (SQLException e){
-            e.printStackTrace();
+            throw new RepoException("SQLException!");
         }
         return guests;
     }
