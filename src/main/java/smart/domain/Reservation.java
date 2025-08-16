@@ -2,7 +2,7 @@ package smart.domain;
 
 import smart.utils.enums.Status;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Reservation {
     private int reservationId;
