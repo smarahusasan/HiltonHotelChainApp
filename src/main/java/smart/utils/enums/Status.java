@@ -1,5 +1,5 @@
 package smart.utils.enums;
 
 public enum Status {
-    CONFIRMED,NOT_CONFIRMED
+    CONFIRMED,NOT_CONFIRMED,CANCELED
 }
