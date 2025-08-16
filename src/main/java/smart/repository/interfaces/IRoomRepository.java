@@ -8,4 +8,5 @@ public interface IRoomRepository {
     void addRoom(Room room);
     List<Room> getRoomsForHotel(int hotelId);
     Room getRoom(int roomId);
+    void updateRoom(Room room);
 }
