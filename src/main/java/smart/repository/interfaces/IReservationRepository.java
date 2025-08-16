@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface IReservationRepository {
     void makeReservation(Reservation reservation);
-    void cancelRoomReservation(int reservationId);
+    void updateReservation(Reservation reservation);
     List<Reservation> getReservationsForHotel(int hotelId);
+    Reservation getReservation(int reservationId);
 }

@@ -42,12 +42,12 @@ public class ReservationRepository implements IReservationRepository {
     }
 
     @Override
-    public void cancelRoomReservation(int reservationId) {
+    public void updateReservation(Reservation reservation) {
         String sql="update reservations set status=? where reservation_id=?";
         Connection connection=dbUtils.getConnection();
         try(PreparedStatement preparedStatement=connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, Status.CANCELED.name());
-            preparedStatement.setInt(2, reservationId);
+            preparedStatement.setString(1, reservation.getStatus().name());
+            preparedStatement.setInt(2, reservation.getReservationId());
 
             int result=preparedStatement.executeUpdate();
             if(result!=1){
@@ -83,5 +83,30 @@ public class ReservationRepository implements IReservationRepository {
             throw new RepoException("SQLException!");
         }
         return reservations;
+    }
+
+    @Override
+    public Reservation getReservation(int reservationId) {
+        String sql="select * from reservations where reservation_id=?";
+        Connection connection=dbUtils.getConnection();
+        try(PreparedStatement preparedStatement=connection.prepareStatement(sql)){
+            preparedStatement.setInt(1, reservationId);
+
+            ResultSet resultSet=preparedStatement.executeQuery();
+            if(resultSet.next()){
+                int guestId=resultSet.getInt("guest_id");
+                int hotelId=resultSet.getInt("hotel_id");
+                Date checkInDate=resultSet.getDate("checkindate");
+                Date checkOutDate=resultSet.getDate("checkoutdate");
+                Date reservationDate=resultSet.getDate("reservationdate");
+                Status status=Status.valueOf(resultSet.getString("status"));
+                int roomId=resultSet.getInt("room_number");
+
+                return new Reservation(reservationId,guestId,roomId,checkInDate,checkOutDate,reservationDate,status,hotelId);
+            }
+        }catch (SQLException e) {
+            throw new RepoException("SQLException!");
+        }
+        throw new RepoException("Reservation with id "+reservationId+" not found!");
     }
 }
