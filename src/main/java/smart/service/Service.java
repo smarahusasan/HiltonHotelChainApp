@@ -9,9 +9,6 @@ import smart.repository.interfaces.IHotelRepository;
 import smart.repository.interfaces.IReservationRepository;
 import smart.repository.interfaces.IRoomRepository;
 import smart.utils.enums.Status;
-import smart.validator.GuestValidator;
-import smart.validator.HotelValidator;
-import smart.validator.ReservationValidator;
 import smart.validator.Validator;
 
 import java.util.List;

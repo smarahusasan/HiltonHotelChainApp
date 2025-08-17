@@ -9,9 +9,7 @@ import smart.utils.Input;
 import smart.utils.exceptions.RepoException;
 import smart.utils.exceptions.ValidationException;
 
-import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class HotelModule {

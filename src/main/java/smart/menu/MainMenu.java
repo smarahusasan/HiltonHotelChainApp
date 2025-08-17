@@ -1,9 +1,7 @@
 package smart.menu;
 
-import smart.service.Service;
 import smart.utils.Input;
 
-import java.util.Scanner;
 
 public class MainMenu {
     private final HotelModule hotelModule;

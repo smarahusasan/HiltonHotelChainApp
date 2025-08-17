@@ -1,16 +1,11 @@
 package smart.menu;
 
 import smart.domain.Guest;
-import smart.domain.Hotel;
-import smart.domain.Reservation;
-import smart.domain.Room;
 import smart.service.Service;
 import smart.utils.Input;
 import smart.utils.exceptions.RepoException;
 import smart.utils.exceptions.ValidationException;
 
-import java.util.InputMismatchException;
-import java.util.List;
 
 public class GuestsModule {
     private final Service service;

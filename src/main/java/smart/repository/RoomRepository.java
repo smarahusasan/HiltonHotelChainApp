@@ -3,7 +3,6 @@ package smart.repository;
 import smart.domain.Room;
 import smart.repository.interfaces.IRoomRepository;
 import smart.utils.enums.RoomType;
-import smart.utils.enums.Status;
 import smart.utils.exceptions.RepoException;
 import smart.utils.jdbc.JdbcUtils;
 
