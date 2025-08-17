@@ -67,16 +67,4 @@ public class Hotel {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
-
-    public void addRoom(Room room) {
-        rooms.add(room);
-    }
-
-    public void addGuest(Guest guest) {
-        guests.add(guest);
-    }
-
-    public void addReservation(Reservation reservation) {
-        reservations.add(reservation);
-    }
 }
