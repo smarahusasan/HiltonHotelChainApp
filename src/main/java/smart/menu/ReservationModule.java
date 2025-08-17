@@ -92,6 +92,8 @@ public class ReservationModule {
                     Reservation reservation=new Reservation(guestId,roomNumber,checkInDate,checkOutDate,resDate,hotelId);
                     try{
                         service.makeReservation(reservation);
+                        System.out.println("Reservation made.");
+                        System.out.println("-------------------------------");
                     }catch (RepoException | ValidationException e){
                         System.out.println("Something went wrong: " + e.getMessage());
                     }
@@ -129,6 +131,7 @@ public class ReservationModule {
                 }
                 case "4": {
                     System.out.println("Going back to main menu.....");
+                    System.out.println("-------------------------------");
                     return;
                 }case "5":{
                     System.out.println("Now exiting.....\nGoodbye!");

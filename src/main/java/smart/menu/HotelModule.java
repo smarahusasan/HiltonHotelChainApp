@@ -49,6 +49,8 @@ public class HotelModule {
                     Hotel hotel = new Hotel(id, hotelName, hotelAddress);
                     try{
                         service.addHotel(hotel);
+                        System.out.println("Hotel added!");
+                        System.out.println("-------------------------------");
                     }catch (RepoException | ValidationException e){
                         System.out.println("Something went wrong: " + e.getMessage());
                     }

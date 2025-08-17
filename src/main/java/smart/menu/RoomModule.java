@@ -54,7 +54,9 @@ public class RoomModule {
                     Room room=new Room(roomType,id);
                     try{
                         service.addRoom(room);
-                    }catch (RepoException | ValidationException e){
+                        System.out.println("Room added");
+                        System.out.println("-------------------------------");
+                    }catch (RepoException e){
                         System.out.println("Something went wrong: " + e.getMessage());
                     }
                     break;

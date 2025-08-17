@@ -62,12 +62,15 @@ public class GuestsModule {
                     Guest guest = new Guest(id, guestEmail, guestName, guestPhoneNumber, hotelId);
                     try {
                         service.addGuest(guest);
+                        System.out.println("Guest added!");
+                        System.out.println("-------------------------------");
                     } catch (RepoException | ValidationException e) {
                         System.out.println("Something went wrong: " + e.getMessage());
                     }
                     break;
                 }case "2": {
                     System.out.println("Going back to main menu.....");
+                    System.out.println("-------------------------------");
                     return;
                 }case "3":{
                     System.out.println("Now exiting.....\nGoodbye!");
