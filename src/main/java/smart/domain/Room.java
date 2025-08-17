@@ -15,6 +15,12 @@ public class Room {
         this.hotelId = hotelId;
     }
 
+    public Room(RoomType type, int hotelId) {
+        this.type = type;
+        this.hotelId = hotelId;
+        this.available = true;
+    }
+
     public int getRoomNumber() {
         return roomNumber;
     }
@@ -45,5 +51,15 @@ public class Room {
 
     public void setHotelId(int hotelId) {
         this.hotelId = hotelId;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "roomNumber=" + roomNumber +
+                ", type=" + type +
+                ", available=" + available +
+                ", hotelId=" + hotelId +
+                '}';
     }
 }

@@ -25,6 +25,15 @@ public class Reservation {
         this.hotelId = hotelId;
     }
 
+    public Reservation(int guestId, int roomId, Date checkInDate, Date checkOutDate, Date reservationDate, int hotelId) {
+        this.guestId = guestId;
+        this.roomId = roomId;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+        this.reservationDate = reservationDate;
+        this.hotelId = hotelId;
+    }
+
     public Date getReservationDate() {
         return reservationDate;
     }
@@ -87,5 +96,18 @@ public class Reservation {
 
     public void setHotelId(int hotelId) {
         this.hotelId = hotelId;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "reservationId=" + reservationId +
+                ", guestId=" + guestId +
+                ", roomId=" + roomId +
+                ", checkInDate=" + checkInDate +
+                ", checkOutDate=" + checkOutDate +
+                ", reservationDate=" + reservationDate +
+                ", status=" + status +
+                '}';
     }
 }

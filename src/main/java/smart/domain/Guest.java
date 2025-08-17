@@ -61,4 +61,14 @@ public class Guest {
     public void setHotelId(int hotelId) {
         this.hotelId = hotelId;
     }
+
+    @Override
+    public String toString() {
+        return "Guest{" +
+                "guestId=" + guestId +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }
