@@ -29,15 +29,7 @@ public class Main {
             System.out.println("Cannot find db.config "+e);
         }
 
-        IGuestRepository guestRepository=new GuestRepository(props);
-        Validator<Guest> guestValidator=new GuestValidator();
-        IHotelRepository hotelRepository=new HotelRepository(props);
-        Validator<Hotel> hotelValidator=new HotelValidator();
-        IReservationRepository reservationRepository=new ReservationRepository(props);
-        Validator<Reservation> reservationValidator=new ReservationValidator();
-        IRoomRepository roomRepository=new RoomRepository(props);
-
-        Service service=new Service(guestRepository, guestValidator, hotelRepository, hotelValidator, reservationRepository, reservationValidator, roomRepository);
+        Service service = getService(props);
 
         HotelModule hotelModule=new HotelModule(service);
         GuestsModule guestsModule=new GuestsModule(service);
@@ -46,5 +38,17 @@ public class Main {
         MainMenu gui=new MainMenu(hotelModule,reservationModule,guestsModule,roomModule);
 
         gui.run();
+    }
+
+    public static Service getService(Properties props) {
+        IGuestRepository guestRepository=new GuestRepository(props);
+        Validator<Guest> guestValidator=new GuestValidator();
+        IHotelRepository hotelRepository=new HotelRepository(props);
+        Validator<Hotel> hotelValidator=new HotelValidator();
+        IReservationRepository reservationRepository=new ReservationRepository(props);
+        Validator<Reservation> reservationValidator=new ReservationValidator();
+        IRoomRepository roomRepository=new RoomRepository(props);
+
+        return new Service(guestRepository, guestValidator, hotelRepository, hotelValidator, reservationRepository, reservationValidator, roomRepository);
     }
 }
