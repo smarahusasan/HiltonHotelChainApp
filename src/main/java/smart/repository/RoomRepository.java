@@ -23,12 +23,21 @@ public class RoomRepository implements IRoomRepository {
 
     @Override
     public void addRoom(Room room) {
-        String sql="insert into rooms(type, available, hotel_id) values(?,?,?)";
+        String sql;
+        if(room.getRoomNumber()==0){
+            sql="insert into rooms(type, available, hotel_id) values(?,?,?)";
+        }else{
+            sql="insert into rooms(room_number, type, available, hotel_id) values(?,?,?,?)";
+        }
         Connection connection= dbUtils.getConnection();
         try(PreparedStatement preparedStatement=connection.prepareStatement(sql)){
-            preparedStatement.setString(1, room.getType().name());
-            preparedStatement.setBoolean(2, room.isAvailable());
-            preparedStatement.setInt(3, room.getHotelId());
+            int idx=1;
+            if(room.getRoomNumber()!=0){
+                preparedStatement.setInt(idx++,room.getRoomNumber());
+            }
+            preparedStatement.setString(idx++, room.getType().name());
+            preparedStatement.setBoolean(idx++, room.isAvailable());
+            preparedStatement.setInt(idx, room.getHotelId());
 
             int res = preparedStatement.executeUpdate();
             if(res != 1){

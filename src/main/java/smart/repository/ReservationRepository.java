@@ -20,16 +20,25 @@ public class ReservationRepository implements IReservationRepository {
 
     @Override
     public void makeReservation(Reservation reservation) {
-        String sql="insert into reservations(guest_id, hotel_id, checkindate, checkoutdate, reservationdate, status, room_number) values(?,?,?,?,?,?,?)";
+        String sql;
+        if(reservation.getReservationId()==0){
+            sql="insert into reservations(guest_id, hotel_id, checkindate, checkoutdate, reservationdate, status, room_number) values(?,?,?,?,?,?,?)";
+        }else{
+            sql="insert into reservations(reservation_id, guest_id, hotel_id, checkindate, checkoutdate, reservationdate, status, room_number) values(?,?,?,?,?,?,?,?)";
+        }
         Connection connection=dbUtils.getConnection();
         try(PreparedStatement preparedStatement=connection.prepareStatement(sql)){
-            preparedStatement.setInt(1, reservation.getGuestId());
-            preparedStatement.setInt(2, reservation.getHotelId());
-            preparedStatement.setDate(3, reservation.getCheckInDate());
-            preparedStatement.setDate(4, reservation.getCheckOutDate());
-            preparedStatement.setDate(5, reservation.getReservationDate());
-            preparedStatement.setString(6,reservation.getStatus().name());
-            preparedStatement.setInt(7,reservation.getRoomId());
+            int idx=1;
+            if(reservation.getReservationId()!=0){
+                preparedStatement.setInt(idx++, reservation.getReservationId());
+            }
+            preparedStatement.setInt(idx++, reservation.getGuestId());
+            preparedStatement.setInt(idx++, reservation.getHotelId());
+            preparedStatement.setDate(idx++, reservation.getCheckInDate());
+            preparedStatement.setDate(idx++, reservation.getCheckOutDate());
+            preparedStatement.setDate(idx++, reservation.getReservationDate());
+            preparedStatement.setString(idx++,reservation.getStatus().name());
+            preparedStatement.setInt(idx,reservation.getRoomId());
 
             int result=preparedStatement.executeUpdate();
             if(result!=1){
