@@ -87,12 +87,12 @@ public class Service {
     }
 
     public List<Room> getRoomForHotel(int hotelId) {
-        Hotel hotel=hotelRepository.getHotel(hotelId);
+        hotelRepository.getHotel(hotelId);
         return roomRepository.getRoomsForHotel(hotelId);
     }
 
     public List<Reservation> getReservationsForHotel(int hotelId){
-        Hotel hotel=hotelRepository.getHotel(hotelId);
+        hotelRepository.getHotel(hotelId);
         return reservationRepository.getReservationsForHotel(hotelId);
     }
 }
