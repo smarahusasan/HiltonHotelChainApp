@@ -59,7 +59,7 @@ public class GuestsModule {
                         }
                     }
 
-                    Guest guest = new Guest(id, guestName, guestEmail, guestPhoneNumber, hotelId);
+                    Guest guest = new Guest(id, guestEmail, guestName, guestPhoneNumber, hotelId);
                     try {
                         service.addGuest(guest);
                     } catch (RepoException | ValidationException e) {
