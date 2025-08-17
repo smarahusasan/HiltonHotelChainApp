@@ -88,4 +88,12 @@ public class Service {
         room.setAvailable(true);
         roomRepository.updateRoom(room);
     }
+
+    public List<Room> getRoomForHotel(int hotelId) {
+        return roomRepository.getRoomsForHotel(hotelId);
+    }
+
+    public List<Reservation> getReservationsForHotel(int hotelId){
+        return reservationRepository.getReservationsForHotel(hotelId);
+    }
 }
