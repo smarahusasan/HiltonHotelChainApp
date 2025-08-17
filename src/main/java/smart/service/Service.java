@@ -17,13 +17,13 @@ import smart.validator.Validator;
 import java.util.List;
 
 public class Service {
-    private IGuestRepository guestRepository;
+    private final IGuestRepository guestRepository;
     private final Validator<Guest> guestValidator;
-    private IHotelRepository hotelRepository;
+    private final IHotelRepository hotelRepository;
     private final Validator<Hotel> hotelValidator;
-    private IReservationRepository reservationRepository;
+    private final IReservationRepository reservationRepository;
     private final Validator<Reservation> reservationValidator;
-    private IRoomRepository roomRepository;
+    private final IRoomRepository roomRepository;
 
     public Service(IGuestRepository guestRepository, Validator<Guest> guestValidator, IHotelRepository hotelRepository, Validator<Hotel> hotelValidator, IReservationRepository reservationRepository, Validator<Reservation> reservationValidator, IRoomRepository roomRepository) {
         this.guestRepository = guestRepository;
@@ -35,12 +35,12 @@ public class Service {
         this.roomRepository = roomRepository;
     }
 
-    void addHotel(Hotel hotel) {
+    public void addHotel(Hotel hotel) {
         hotelValidator.validate(hotel);
         hotelRepository.addHotel(hotel);
     }
 
-    Hotel getHotel(int hotelId) {
+    public Hotel getHotel(int hotelId) {
         Hotel hotelFound = hotelRepository.getHotel(hotelId);
         List<Room> roomsForHotel = roomRepository.getRoomsForHotel(hotelId);
         hotelFound.setRooms(roomsForHotel);
@@ -52,20 +52,20 @@ public class Service {
         return hotelFound;
     }
 
-    void addRoom(Room room) {
+    public void addRoom(Room room) {
         roomRepository.addRoom(room);
     }
 
-    Room getRoom(int roomId) {
+    public Room getRoom(int roomId) {
         return roomRepository.getRoom(roomId);
     }
 
-    void addGuest(Guest guest) {
+    public void addGuest(Guest guest) {
         guestValidator.validate(guest);
         guestRepository.addGuest(guest);
     }
 
-    void makeReservation(Reservation reservation) {
+    public void makeReservation(Reservation reservation) {
         reservationValidator.validate(reservation);
 
         Room room = roomRepository.getRoom(reservation.getRoomId());
@@ -79,7 +79,7 @@ public class Service {
         reservationRepository.makeReservation(reservation);
     }
 
-    void cancelReservation(int reservationId) {
+    public void cancelReservation(int reservationId) {
         Reservation reservation=reservationRepository.getReservation(reservationId);
         reservation.setStatus(Status.CANCELED);
         reservationRepository.updateReservation(reservation);
