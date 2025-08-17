@@ -27,16 +27,7 @@ public class HotelModule {
             switch(choice){
                 case "1":{
                     System.out.println("Enter hotel id:");
-                    int id;
-                    while (true) {
-                        try {
-                            String line = Input.sc.nextLine();
-                            id = Integer.parseInt(line);
-                            break;
-                        } catch (NumberFormatException e) {
-                            System.out.println("Invalid hotel id. Please try again.");
-                        }
-                    }
+                    int id =Input.getIntFromInput();
 
                     System.out.println("Enter hotel name:");
                     String hotelName = Input.sc.nextLine().trim();
@@ -55,16 +46,7 @@ public class HotelModule {
                     break;
                 }case "2":{
                     System.out.println("Enter hotel id:");
-                    int hotelId;
-                    while (true) {
-                        try {
-                            String line = Input.sc.nextLine();
-                            hotelId = Integer.parseInt(line);
-                            break;
-                        } catch (NumberFormatException e) {
-                            System.out.println("Invalid hotel id. Please try again.");
-                        }
-                    }
+                    int hotelId=Input.getIntFromInput();
                     try{
                         Hotel hotel = service.getHotel(hotelId);
                         System.out.println("Name: " + hotel.getName());
@@ -80,16 +62,7 @@ public class HotelModule {
                 }
                 case "3":{
                     System.out.println("Enter hotel id:");
-                    int hotelId;
-                    while (true) {
-                        try {
-                            String line = Input.sc.nextLine();
-                            hotelId = Integer.parseInt(line);
-                            break;
-                        } catch (NumberFormatException e) {
-                            System.out.println("Invalid hotel id. Please try again.");
-                        }
-                    }
+                    int hotelId = Input.getIntFromInput();
                     try{
                         List<Room> rooms=service.getRoomForHotel(hotelId);
                         System.out.println("Rooms: " + rooms.stream().map(Room::toString).collect(Collectors.joining(", ")));

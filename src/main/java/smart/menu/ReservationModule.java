@@ -26,64 +26,21 @@ public class ReservationModule {
             switch(choice){
                 case "1":{
                     System.out.println("Enter guest id:");
-                    int guestId;
-                    while(true){
-                        try{
-                            String line = Input.sc.nextLine();
-                            guestId = Integer.parseInt(line);
-                            break;
-                        }catch(NumberFormatException e){
-                            System.out.println("Invalid guest id. Please try again.");
-                        }
-                    }
+                    int guestId=Input.getIntFromInput();
 
                     System.out.println("Enter hotel id:");
-                    int hotelId;
-                    while(true){
-                        try{
-                            String line = Input.sc.nextLine();
-                            hotelId = Integer.parseInt(line);
-                            break;
-                        }catch(NumberFormatException e){
-                            System.out.println("Invalid hotel id. Please try again.");
-                        }
-                    }
+                    int hotelId=Input.getIntFromInput();
 
                     System.out.println("Enter check in date:");
-                    Date checkInDate;
-                    while(true){
-                        try{
-                            checkInDate = Date.valueOf(Input.sc.nextLine());
-                            break;
-                        }catch (IllegalArgumentException e){
-                            System.out.println("Invalid check in date. Please try again.");
-                        }
-                    }
+                    Date checkInDate=Input.getDateFromInput();
 
                     System.out.println("Enter check out date:");
-                    Date checkOutDate;
-                    while(true){
-                        try{
-                            checkOutDate = Date.valueOf(Input.sc.nextLine());
-                            break;
-                        }catch (IllegalArgumentException e){
-                            System.out.println("Invalid check out date. Please try again.");
-                        }
-                    }
+                    Date checkOutDate=Input.getDateFromInput();
 
                     Date resDate = Date.valueOf(LocalDate.now());
 
                     System.out.println("Enter room number:");
-                    int roomNumber;
-                    while(true){
-                        try{
-                            String line = Input.sc.nextLine();
-                            roomNumber = Integer.parseInt(line);
-                            break;
-                        }catch(NumberFormatException e){
-                            System.out.println("Invalid room number. Please try again.");
-                        }
-                    }
+                    int roomNumber=Input.getIntFromInput();
 
                     Reservation reservation=new Reservation(guestId,roomNumber,checkInDate,checkOutDate,resDate,hotelId);
                     try{
@@ -96,16 +53,7 @@ public class ReservationModule {
                     break;
                 }case "2":{
                     System.out.println("Enter reservation id:");
-                    int resId;
-                    while(true){
-                        try{
-                            String line = Input.sc.nextLine();
-                            resId = Integer.parseInt(line);
-                            break;
-                        }catch(NumberFormatException e){
-                            System.out.println("Invalid reservation id. Please try again.");
-                        }
-                    }
+                    int resId =Input.getIntFromInput();
                     try{
                         service.cancelReservation(resId);
                         System.out.println("Reservation cancelled.");
@@ -117,16 +65,7 @@ public class ReservationModule {
                 }
                 case "3":{
                     System.out.println("Enter hotel id:");
-                    int hotelId;
-                    while(true){
-                        try{
-                            String line = Input.sc.nextLine();
-                            hotelId = Integer.parseInt(line);
-                            break;
-                        }catch(NumberFormatException e){
-                            System.out.println("Invalid hotel id. Please try again.");
-                        }
-                    }
+                    int hotelId=Input.getIntFromInput();
                     try{
                         List<Reservation> reservations=service.getReservationsForHotel(hotelId);
                         System.out.println("Reservations: " + reservations.stream().map(Reservation::toString).collect(Collectors.joining(", ")));

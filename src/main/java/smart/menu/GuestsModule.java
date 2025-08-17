@@ -22,16 +22,7 @@ public class GuestsModule {
             switch(choice){
                 case "1": {
                     System.out.println("Enter guest id:");
-                    int id;
-                    while (true) {
-                        try {
-                            String line=Input.sc.nextLine();
-                            id = Integer.parseInt(line);
-                            break;
-                        } catch (NumberFormatException e) {
-                            System.out.println("Invalid guest id. Please try again.");
-                        }
-                    }
+                    int guestId = Input.getIntFromInput();
 
                     System.out.println("Enter guest name:");
                     String guestName = Input.sc.nextLine().trim();
@@ -43,18 +34,9 @@ public class GuestsModule {
                     String guestPhoneNumber = Input.sc.nextLine().trim();
 
                     System.out.println("Enter hotel id:");
-                    int hotelId;
-                    while (true) {
-                        try {
-                            String line=Input.sc.nextLine();
-                            hotelId = Integer.parseInt(line);
-                            break;
-                        } catch (NumberFormatException e) {
-                            System.out.println("Invalid hotel id. Please try again.");
-                        }
-                    }
+                    int hotelId =Input.getIntFromInput();
 
-                    Guest guest = new Guest(id, guestEmail, guestName, guestPhoneNumber, hotelId);
+                    Guest guest = new Guest(guestId, guestEmail, guestName, guestPhoneNumber, hotelId);
                     try {
                         service.addGuest(guest);
                         System.out.println("Guest added!");
