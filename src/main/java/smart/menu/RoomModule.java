@@ -72,8 +72,13 @@ public class RoomModule {
                             System.out.println("Invalid room number. Please try again.");
                         }
                     }
-                    Room room=service.getRoom(roomNumber);
-                    System.out.println(room.toString());
+                    try{
+                        Room room=service.getRoom(roomNumber);
+                        System.out.println(room.toString());
+                        System.out.println("-------------------------------");
+                    }catch (RepoException e){
+                        System.out.println("Something went wrong: " + e.getMessage());
+                    }
                     break;
                 }
                 case "3":{
@@ -88,9 +93,14 @@ public class RoomModule {
                             System.out.println("Invalid hotel id. Please try again.");
                         }
                     }
-                    List<Room> rooms=service.getRoomForHotel(hotelId);
-                    System.out.println("Rooms: " +
-                            rooms.stream().filter(Room::isAvailable).map(Room::toString).collect(Collectors.joining(", ")));
+                    try{
+                        List<Room> rooms=service.getRoomForHotel(hotelId);
+                        System.out.println("Rooms: " +
+                                rooms.stream().filter(Room::isAvailable).map(Room::toString).collect(Collectors.joining(", ")));
+                        System.out.println("-------------------------------");
+                    }catch (RepoException e){
+                        System.out.println("Something went wrong: " + e.getMessage());
+                    }
                     break;
                 }
                 case "4": {

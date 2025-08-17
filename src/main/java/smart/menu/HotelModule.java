@@ -67,12 +67,17 @@ public class HotelModule {
                             System.out.println("Invalid hotel id. Please try again.");
                         }
                     }
-                    Hotel hotel = service.getHotel(hotelId);
-                    System.out.println("Name: " + hotel.getName());
-                    System.out.println("Location: " + hotel.getLocation());
-                    System.out.println("Rooms: " + hotel.getRooms().stream().map(Room::toString).collect(Collectors.joining(", ")));
-                    System.out.println("Guests: " + hotel.getGuests().stream().map(Guest::toString).collect(Collectors.joining(", ")));
-                    System.out.println("Reservations: "+ hotel.getReservations().stream().map(Reservation::toString).collect(Collectors.joining(", ")));
+                    try{
+                        Hotel hotel = service.getHotel(hotelId);
+                        System.out.println("Name: " + hotel.getName());
+                        System.out.println("Location: " + hotel.getLocation());
+                        System.out.println("Rooms: " + hotel.getRooms().stream().map(Room::toString).collect(Collectors.joining(", ")));
+                        System.out.println("Guests: " + hotel.getGuests().stream().map(Guest::toString).collect(Collectors.joining(", ")));
+                        System.out.println("Reservations: "+ hotel.getReservations().stream().map(Reservation::toString).collect(Collectors.joining(", ")));
+                        System.out.println("-------------------------------");
+                    }catch (RepoException e){
+                        System.out.println("Something went wrong: " + e.getMessage());
+                    }
                     break;
                 }
                 case "3":{
@@ -87,8 +92,13 @@ public class HotelModule {
                             System.out.println("Invalid hotel id. Please try again.");
                         }
                     }
-                    List<Room> rooms=service.getRoomForHotel(hotelId);
-                    System.out.println("Rooms: " + rooms.stream().map(Room::toString).collect(Collectors.joining(", ")));
+                    try{
+                        List<Room> rooms=service.getRoomForHotel(hotelId);
+                        System.out.println("Rooms: " + rooms.stream().map(Room::toString).collect(Collectors.joining(", ")));
+                        System.out.println("-------------------------------");
+                    }catch (RepoException e){
+                        System.out.println("Something went wrong: " + e.getMessage());
+                    }
                     break;
                 }
                 case "4": {

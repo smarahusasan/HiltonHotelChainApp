@@ -110,7 +110,13 @@ public class ReservationModule {
                             System.out.println("Invalid reservation id. Please try again.");
                         }
                     }
-                    service.cancelReservation(resId);
+                    try{
+                        service.cancelReservation(resId);
+                        System.out.println("Reservation cancelled.");
+                        System.out.println("-------------------------------");
+                    }catch (RepoException e){
+                        System.out.println("Something went wrong: " + e.getMessage());
+                    }
                     break;
                 }
                 case "3":{
@@ -125,8 +131,13 @@ public class ReservationModule {
                             System.out.println("Invalid hotel id. Please try again.");
                         }
                     }
-                    List<Reservation> reservations=service.getReservationsForHotel(hotelId);
-                    System.out.println("Reservations: " + reservations.stream().map(Reservation::toString).collect(Collectors.joining(", ")));
+                    try{
+                        List<Reservation> reservations=service.getReservationsForHotel(hotelId);
+                        System.out.println("Reservations: " + reservations.stream().map(Reservation::toString).collect(Collectors.joining(", ")));
+                        System.out.println("-------------------------------");
+                    }catch (RepoException e){
+                        System.out.println("Something went wrong: " + e.getMessage());
+                    }
                     break;
                 }
                 case "4": {
