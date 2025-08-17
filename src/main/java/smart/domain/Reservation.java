@@ -32,6 +32,17 @@ public class Reservation {
         this.checkOutDate = checkOutDate;
         this.reservationDate = reservationDate;
         this.hotelId = hotelId;
+        this.reservationId=0;
+    }
+
+    public Reservation(int reservationId, int guestId, int roomId, Date checkInDate, Date checkOutDate, Date reservationDate, int hotelId) {
+        this.reservationId = reservationId;
+        this.guestId = guestId;
+        this.roomId = roomId;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+        this.reservationDate = reservationDate;
+        this.hotelId = hotelId;
     }
 
     public Date getReservationDate() {

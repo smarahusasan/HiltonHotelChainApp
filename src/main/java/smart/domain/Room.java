@@ -16,6 +16,7 @@ public class Room {
     }
 
     public Room(RoomType type, int hotelId) {
+        this.roomNumber = 0;
         this.type = type;
         this.hotelId = hotelId;
         this.available = true;
