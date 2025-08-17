@@ -76,7 +76,7 @@ public class Service {
         reservationRepository.makeReservation(reservation);
     }
 
-    public void cancelReservation(int reservationId) {
+    public boolean cancelReservation(int reservationId) {
         Reservation reservation=reservationRepository.getReservation(reservationId);
         reservation.setStatus(Status.CANCELED);
         reservationRepository.updateReservation(reservation);
@@ -84,6 +84,7 @@ public class Service {
         Room room = roomRepository.getRoom(reservation.getRoomId());
         room.setAvailable(true);
         roomRepository.updateRoom(room);
+        return true;
     }
 
     public List<Room> getRoomForHotel(int hotelId) {
