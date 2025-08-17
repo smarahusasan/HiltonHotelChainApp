@@ -103,6 +103,7 @@ public class HotelModule {
                 }
                 case "4": {
                     System.out.println("Going back to main menu.....");
+                    System.out.println("-------------------------------");
                     return;
                 }case "5":{
                     System.out.println("Now exiting.....\nGoodbye!");
