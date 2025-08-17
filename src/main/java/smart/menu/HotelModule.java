@@ -41,10 +41,10 @@ public class HotelModule {
                     }
 
                     System.out.println("Enter hotel name:");
-                    String hotelName = Input.sc.nextLine();
+                    String hotelName = Input.sc.nextLine().trim();
 
                     System.out.println("Enter hotel location:");
-                    String hotelAddress = Input.sc.nextLine();
+                    String hotelAddress = Input.sc.nextLine().trim();
 
                     Hotel hotel = new Hotel(id, hotelName, hotelAddress);
                     try{

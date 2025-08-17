@@ -32,7 +32,7 @@ public class RoomModule {
                     RoomType roomType;
                     while(true){
                         try{
-                            roomType = RoomType.valueOf(Input.sc.nextLine());
+                            roomType = RoomType.valueOf(Input.sc.nextLine().trim());
                             break;
                         }catch(IllegalArgumentException e){
                             System.out.println("Invalid room type. Please try again.");

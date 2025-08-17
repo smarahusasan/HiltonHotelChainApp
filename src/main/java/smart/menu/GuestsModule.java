@@ -39,13 +39,13 @@ public class GuestsModule {
                     }
 
                     System.out.println("Enter guest name:");
-                    String guestName = Input.sc.nextLine();
+                    String guestName = Input.sc.nextLine().trim();
 
                     System.out.println("Enter guest email:");
-                    String guestEmail = Input.sc.nextLine();
+                    String guestEmail = Input.sc.nextLine().trim();
 
                     System.out.println("Enter guest phone number:");
-                    String guestPhoneNumber = Input.sc.nextLine();
+                    String guestPhoneNumber = Input.sc.nextLine().trim();
 
                     System.out.println("Enter hotel id:");
                     int hotelId;
