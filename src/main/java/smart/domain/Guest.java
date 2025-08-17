@@ -15,13 +15,6 @@ public class Guest {
         this.hotelId = hotelId;
     }
 
-    public Guest(int guestId, String email, String name, String phone) {
-        this.guestId = guestId;
-        this.email = email;
-        this.name = name;
-        this.phone = phone;
-    }
-
     public int getGuestId() {
         return guestId;
     }

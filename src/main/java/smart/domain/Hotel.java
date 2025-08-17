@@ -11,15 +11,6 @@ public class Hotel {
     private List<Guest> guests;
     private List<Reservation> reservations;
 
-    public Hotel(int hotelId, String name, String location, List<Room> rooms, List<Guest> guests, List<Reservation> reservations) {
-        this.hotelId = hotelId;
-        this.name = name;
-        this.location = location;
-        this.rooms = rooms;
-        this.guests = guests;
-        this.reservations = reservations;
-    }
-
     public Hotel(int hotelId, String name, String location) {
         this.hotelId = hotelId;
         this.name = name;
