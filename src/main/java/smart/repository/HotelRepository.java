@@ -37,7 +37,7 @@ public class HotelRepository implements IHotelRepository {
 
     @Override
     public Hotel getHotel(int hotelId) {
-        String sql="select * from hotels where hotelId=?";
+        String sql="select * from hotels where hotel_id=?";
         Connection connection=dbUtils.getConnection();
         try(PreparedStatement preparedStatement=connection.prepareStatement(sql)){
             preparedStatement.setInt(1,hotelId);
