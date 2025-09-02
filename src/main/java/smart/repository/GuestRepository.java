@@ -25,11 +25,11 @@ public class GuestRepository implements IGuestRepository {
         String sql="insert into guests values(?,?,?,?,?)";
         Connection connection=dbUtils.getConnection();
         try(PreparedStatement ps=connection.prepareStatement(sql)){
-            ps.setInt(1,guest.getGuestId());
-            ps.setString(2,guest.getName());
-            ps.setString(3,guest.getEmail());
-            ps.setString(4,guest.getPhone());
-            ps.setInt(5,guest.getHotelId());
+            ps.setInt(1,guest.guestId());
+            ps.setString(2,guest.name());
+            ps.setString(3,guest.email());
+            ps.setString(4,guest.phone());
+            ps.setInt(5,guest.hotelId());
 
             int result=ps.executeUpdate();
             if(result!=1)
