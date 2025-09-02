@@ -51,7 +51,7 @@ public class HotelModule {
                         Hotel hotel = service.getHotel(hotelId);
                         System.out.println("Name: " + hotel.getName());
                         System.out.println("Location: " + hotel.getLocation());
-                        System.out.println("Rooms: " + hotel.getRooms().stream().map(Room::toString).collect(Collectors.joining(", ")));
+                        System.out.println("Rooms: " + service.getRooms().stream().filter(room -> room.getHotelId() == hotelId).map(Room::toString).collect(Collectors.joining(", ")));
                         System.out.println("Guests: " + hotel.getGuests().stream().map(Guest::toString).collect(Collectors.joining(", ")));
                         System.out.println("Reservations: "+ hotel.getReservations().stream().map(Reservation::toString).collect(Collectors.joining(", ")));
                         System.out.println("-------------------------------");

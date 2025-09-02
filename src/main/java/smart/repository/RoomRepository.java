@@ -49,6 +49,28 @@ public class RoomRepository implements IRoomRepository {
     }
 
     @Override
+    public List<Room> getRooms(){
+        String sql="select * from rooms";
+        List<Room> rooms=new ArrayList<>();
+        Connection connection= dbUtils.getConnection();
+        try( PreparedStatement preparedStatement=connection.prepareStatement(sql)){
+
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+                int roomNumber=resultSet.getInt("room_number");
+                RoomType type=RoomType.valueOf(resultSet.getString("type"));
+                boolean available=resultSet.getBoolean("available");
+                int hotelId=resultSet.getInt("hotel_id");
+                Room room=new Room(roomNumber, type, available, hotelId);
+                rooms.add(room);
+            }
+        }catch (SQLException e) {
+            throw new RepoException("SQLException!");
+        }
+        return rooms;
+    }
+
+    @Override
     public List<Room> getRoomsForHotel(int hotelId) {
         String sql="select * from rooms where hotel_id=?";
         List<Room> rooms=new ArrayList<>();

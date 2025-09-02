@@ -49,6 +49,10 @@ public class Service {
         return hotelFound;
     }
 
+    public List<Room> getRooms(){
+        return roomRepository.getRooms();
+    }
+
     public void addRoom(Room room) {
         roomRepository.addRoom(room);
     }
